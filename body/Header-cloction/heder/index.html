@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<style>
+    h2{
+        margin: 10px;
+        text-align: center;
+    }
+</style>
+
+<body>
+     <h2> header collection</h2>
+
+    <hr>
+    <section class="1">
+        <header>
+            <nav>
+                <h1>sk</h1>
+
+                <!-- Hamburger icon -->
+                <div class="menu-toggle" id="menu-toggle">
+                    ☰
+                </div>
+
+                <ul id="nav-links">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Project</a></li>
+                    <li><a href="">Contact</a></li>
+                    <a href="">follew</a>
+                </ul>
+
+            </nav>
+        </header>
+    </section>
+
+    <!-- 2 -->
+     <hr>
+     <section class="2">
+
+     </section>
+
+    <!-- Link to your JS at bottom -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+<script>
+    // Get elements
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    // Add click event
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+</script>
