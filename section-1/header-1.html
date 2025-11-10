@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1>sk</h1>
+
+            <!-- Hamburger icon -->
+            <div class="menu-toggle" id="menu-toggle">
+                ☰
+            </div>
+
+            <ul id="nav-links">
+                <li><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Project</a></li>
+                <li><a href="">Contact</a></li>
+                <li> <a class="folder" href="">follew</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+</body>
+
+</html>
+
+
+
+
+<style>
+    /* * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+    } */
+
+    nav {
+        display: flex;
+        padding: 15px 20px;
+        background-color: #e0d3d3;
+        justify-content: space-around;
+    }
+
+    nav h1 {
+        font-size: 29px;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+    }
+
+    nav ul li {
+        margin-left: 20px;
+    }
+
+    nav ul li a {
+        display: flex;
+        text-decoration: none;
+        color: #333;
+        border-radius: 7px;
+        padding: 5px;
+    }
+
+    .folder {
+        background-color: rgba(0, 255, 255, 0.589);
+        text-decoration: none;
+        color: #000000;
+        border-radius: 7px;
+        padding: 5px;
+        margin: 0px 0px 0px 222px;
+        display: block;
+    }
+    .menu-toggle {
+        display: none;
+        font-size: 28px;
+        cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+        nav {
+            display: flex;
+            padding: 10px 20px;
+            background-color: #f8f8f8;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        nav ul {
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            left:75%;
+            /* width: 10%; */
+            background: #f8f8f8;
+            display: none;
+        }
+
+        nav ul li {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .menu-toggle {
+            display: block;
+        }
+
+        nav ul.active {
+            display: flex;
+        }
+    }
+</style>
+
+
+
+<script>
+    // Get elements
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    // Add click event
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+</script>
