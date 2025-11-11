@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Header</title>
+    <style>
+        /* ===== Base Styles ===== */
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+        }
+
+        header {
+            background-color: rgba(65, 64, 65, 0.9);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header {
+            margin: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            /* align-items: center; */
+            flex-wrap: wrap;
+            padding: 10px 0;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== Search Bar ===== */
+        .search-box input[type="search"] {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 4px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        /* ===== Navigation ===== */
+        .head-ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .head-ul li {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .head-ul li:hover {
+            color: #ffd700;
+        }
+
+        /* ===== Dropdown ===== */
+        details summary {
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        details p {
+            color: antiquewhite;
+
+        }
+
+        /* ===== Mobile View ===== */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                margin: 0 20px;
+            }
+
+            .search-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .search-box input[type="search"] {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .head-ul {
+                flex-wrap: wrap;
+                gap: 10px;
+                font-size: 14px;
+            }
+
+            .head-ul li {
+                background: rgba(255, 255, 255, 0.1);
+                padding: 5px 10px;
+                border-radius: 6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <section class="header">
+            <div>
+                <h2>BrandName</h2>
+            </div>
+
+            <div class="search-box">
+                <input type="search" placeholder="Search...">
+            </div>
+
+            <div>
+                <ul class="head-ul">
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Services</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+
+            <div>
+                <details>
+                    <summary>Menu</summary>
+                    <p>Profile</p>
+                    <p>Settings</p>
+                    <p>Logout</p>
+                </details>
+            </div>
+        </section>
+    </header>
+
+</body>
+
+</html>
