@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Market Style Header</title>
+  <style>
+    /* ===== RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #f2f4f8;
+      color: #333;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 10px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.3s;
+    }
+
+    /* ===== LOGO ===== */
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #007bff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .logo:hover {
+      color: #0056d6;
+    }
+
+    /* ===== SEARCH ===== */
+    .search-box {
+      flex: 1;
+      margin: 0 40px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 10px 40px 10px 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 25px;
+      font-size: 15px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .search-box input:focus {
+      border-color: #007bff;
+    }
+
+    .search-box::after {
+      content: "🔍";
+      position: absolute;
+      right: 15px;
+      top: 8px;
+      font-size: 18px;
+      opacity: 0.6;
+    }
+
+    /* ===== ACTIONS (LOGIN / CART) ===== */
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .actions button {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .actions button:hover {
+      background: #0056d6;
+    }
+
+    .icon {
+      font-size: 22px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .icon:hover {
+      color: #007bff;
+    }
+
+    /* ===== HAMBURGER ===== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #333;
+      border-radius: 3px;
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      header {
+        flex-wrap: wrap;
+        padding: 10px 20px;
+      }
+
+      .search-box {
+        order: 3;
+        width: 100%;
+        margin: 10px 0;
+      }
+
+      .actions {
+        order: 2;
+        width: 100%;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .hamburger {
+        display: flex;
+        order: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">ShopSmart</div>
+
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="search-box">
+      <input type="search" placeholder="Search for products, brands, or more...">
+    </div>
+
+    <div class="actions">
+      <button id="login-btn">Login</button>
+      <button id="logout-btn" style="display:none; background:#dc3545;">Logout</button>
+      <span class="icon">🛒</span>
+      <span class="icon">👤</span>
+    </div>
+  </header>
+
+  <script>
+    // Simple Login/Logout Toggle
+    const loginBtn = document.getElementById('login-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    loginBtn.addEventListener('click', () => {
+      loginBtn.style.display = 'none';
+      logoutBtn.style.display = 'inline-block';
+      alert('Logged In!');
+    });
+
+    logoutBtn.addEventListener('click', () => {
+      logoutBtn.style.display = 'none';
+      loginBtn.style.display = 'inline-block';
+      alert('Logged Out!');
+    });
+  </script>
+</body>
+</html>
