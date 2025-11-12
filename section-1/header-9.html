@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultimate Responsive Header</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #f3f4f6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e1e1e, #414345);
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 25px;
+      flex-wrap: wrap;
+    }
+
+    /* --- LOGO --- */
+    .logo {
+      font-size: 1.6em;
+      font-weight: 600;
+      color: #00c2ff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .logo:hover { color: #fff; }
+
+    /* --- SEARCH BOX --- */
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.15);
+      border-radius: 25px;
+      padding: 4px 10px;
+      margin: 8px 0;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      background: transparent;
+      color: #fff;
+      width: 100px;
+      transition: width 0.3s;
+    }
+
+    .search-box input:focus {
+      width: 150px;
+    }
+
+    .search-box button {
+      background: transparent;
+      border: none;
+      color: #00c2ff;
+      cursor: pointer;
+    }
+
+    /* --- ICONS --- */
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 1.3em;
+    }
+
+    .icons span {
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .icons span:hover {
+      color: #00c2ff;
+    }
+
+    select {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: none;
+      border-radius: 15px;
+      padding: 4px 8px;
+      font-size: 0.9em;
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* --- PROFILE DROPDOWN --- */
+    details.profile {
+      position: relative;
+    }
+
+    .profile summary {
+      list-style: none;
+      font-size: 1.4em;
+      cursor: pointer;
+    }
+
+    .profile-menu {
+      position: absolute;
+      right: 0;
+      top: 40px;
+      background: rgba(0, 0, 0, 0.85);
+      border-radius: 10px;
+      padding: 10px 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 160px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .profile-menu a {
+      color: #ddd;
+      text-decoration: none;
+      font-size: 0.9em;
+      transition: 0.3s;
+    }
+
+    .profile-menu a:hover {
+      color: #00c2ff;
+    }
+
+    /* --- MAIN MENU --- */
+    details.menu {
+      position: relative;
+    }
+
+    .menu summary {
+      list-style: none;
+      font-size: 1.4em;
+      cursor: pointer;
+      color: #00c2ff;
+    }
+
+    .menu-content {
+      position: absolute;
+      right: 0;
+      top: 45px;
+      background: rgba(0, 0, 0, 0.85);
+      border-radius: 10px;
+      padding: 12px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 200px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .menu-content a {
+      color: #ddd;
+      text-decoration: none;
+      font-size: 0.95em;
+      transition: 0.3s;
+    }
+
+    .menu-content a:hover {
+      color: #00c2ff;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .auth-buttons button {
+      background: #00c2ff;
+      border: none;
+      color: #fff;
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .auth-buttons button:hover {
+      background: #0288a7;
+    }
+
+    /* --- ANIMATION --- */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-5px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* --- MOBILE RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .nav {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px 15px;
+      }
+
+      .logo {
+        font-size: 1.4em;
+        margin-bottom: 5px;
+      }
+
+      .search-box {
+        width: 90%;
+        justify-content: center;
+      }
+
+      .icons {
+        justify-content: center;
+        gap: 12px;
+        margin: 10px 0;
+      }
+
+      select {
+        font-size: 0.85em;
+        padding: 4px 6px;
+      }
+
+      details.menu .menu-content,
+      details.profile .profile-menu {
+        position: static;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .menu-content, .profile-menu {
+        background: rgba(40,40,40,0.95);
+        border-radius: 12px;
+      }
+
+      .menu-content a, .profile-menu a {
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .auth-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .auth-buttons button {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="nav">
+
+      <!-- LOGO -->
+      <div class="logo">🌐 HAPROVEN</div>
+
+      <!-- SEARCH BOX -->
+      <div class="search-box">
+        <input type="search" placeholder="Search...">
+        <button>🔍</button>
+      </div>
+
+      <!-- ICONS -->
+      <div class="icons">
+        <span title="Notifications">🔔</span>
+        <span title="Messages">💬</span>
+        <select>
+          <option>EN</option>
+          <option>HI</option>
+          <option>FR</option>
+        </select>
+      </div>
+
+      <!-- PROFILE DROPDOWN -->
+      <details class="profile">
+        <summary>👤</summary>
+        <div class="profile-menu">
+          <a href="#">My Profile</a>
+          <a href="#">Settings</a>
+          <a href="#">Help</a>
+        </div>
+      </details>
+
+      <!-- MAIN MENU -->
+      <details class="menu">
+        <summary></summary>
+        <div class="menu-content">
+          <a href="#">🏠 Home</a>
+          <a href="#">💡 About</a>
+          <a href="#">🧠 Services</a>
+          <a href="#">📞 Contact</a>
+          <div class="auth-buttons">
+            <button>Login</button>
+            <button style="background:#444;">Logout</button>
+          </div>
+        </div>
+      </details>
+    </nav>
+  </header>
+
+</body>
+</html>

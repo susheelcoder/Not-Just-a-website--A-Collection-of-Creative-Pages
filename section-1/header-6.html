@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unique Modern Header</title>
+  <style>
+    /* ==== RESET ==== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+    }
+
+    /* ==== HEADER ==== */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 50px;
+      transition: 0.4s ease;
+    }
+
+    header:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* ==== LOGO ==== */
+    .logo {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      background: linear-gradient(90deg, #00ffe0, #00aaff, #0066ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      cursor: pointer;
+    }
+
+    /* ==== NAV ==== */
+    nav ul {
+      display: flex;
+      gap: 35px;
+      list-style: none;
+    }
+
+    nav ul li {
+      position: relative;
+      cursor: pointer;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #00ffe0;
+      left: 0;
+      bottom: -5px;
+      transition: 0.3s;
+    }
+
+    nav ul li:hover::after {
+      width: 100%;
+    }
+
+    /* ==== SEARCH ==== */
+    .search-box {
+      position: relative;
+    }
+
+    .search-box input {
+      padding: 6px 10px 6px 30px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 14px;
+      transition: 0.3s;
+      width: 160px;
+    }
+
+    .search-box input::placeholder {
+      color: #ccc;
+    }
+
+    .search-box input:focus {
+      background: rgba(255, 255, 255, 0.2);
+      width: 200px;
+    }
+
+    .search-box::before {
+      content: "🔍";
+      position: absolute;
+      left: 10px;
+      top: 4px;
+      font-size: 16px;
+      opacity: 0.6;
+    }
+
+    /* ==== HAMBURGER ==== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      background: #fff;
+      height: 3px;
+      width: 25px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    /* ==== MOBILE ==== */
+    @media (max-width: 768px) {
+      header {
+        flex-wrap: wrap;
+        padding: 10px 25px;
+      }
+
+      nav {
+        display: none;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      nav.show {
+        display: flex;
+        justify-content: center;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .search-box {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">UniHeader</div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav id="navbar">
+      <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Projects</li>
+        <li>Services</li>
+        <li>Contact</li>
+      </ul>
+    </nav>
+
+    <div class="search-box">
+      <input type="search" placeholder="Search...">
+    </div>
+  </header>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navbar").classList.toggle("show");
+    }
+  </script>
+
+</body>
+</html>
