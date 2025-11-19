@@ -1,0 +1,84 @@
+<footer class="footer-b">
+
+  <div class="glass">
+    <div class="col">
+      <h2>YourBrand</h2>
+      <p>Next-generation digital products.</p>
+    </div>
+
+    <div class="col">
+      <h3>Company</h3>
+      <a href="#">About</a>
+      <a href="#">Jobs</a>
+      <a href="#">Team</a>
+    </div>
+
+    <div class="col">
+      <h3>Connect</h3>
+      <a href="#">LinkedIn</a>
+      <a href="#">Twitter</a>
+      <a href="#">Instagram</a>
+    </div>
+
+    <div class="col">
+      <h3>Newsletter</h3>
+      <input type="text" placeholder="Your email" />
+      <button>Subscribe</button>
+    </div>
+  </div>
+
+  <p class="copy2">© 2025 YourBrand</p>
+
+</footer>
+
+<style>
+.footer-b {
+  background: url('https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?auto=format') center/cover;
+  padding: 70px 20px;
+  color: #fff;
+  font-family: Poppins;
+}
+.glass {
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 40px;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 30px;
+}
+.col a {
+  display: block;
+  color: #eee;
+  margin: 6px 0;
+  text-decoration: none;
+}
+.col input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+.col button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  border: none;
+  background: white;
+  color: black;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.copy2 {
+  text-align: center;
+  margin-top: 30px;
+  color: #ddd;
+}
+@media(max-width:800px) {
+  .glass { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:450px) {
+  .glass { grid-template-columns: 1fr; }
+}
+</style>

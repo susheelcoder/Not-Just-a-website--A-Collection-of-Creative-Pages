@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Orbiting Icons</title>
+  <style>
+    body{height:100vh;display:flex;align-items:center;justify-content:center;margin:0;background:#111}
+    .orbit-wrap{position:relative;width:260px;height:260px}
+    .center {
+      position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+      width:80px;height:80px;border-radius:12px;background:#fff;display:grid;place-items:center;font-size:28px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.4);
+    }
+    .orb {
+      position:absolute;left:50%;top:50%;transform-origin:-90px 0;
+      width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#fff;
+      animation:spin 8s linear infinite;
+      box-shadow:0 6px 14px rgba(0,0,0,0.25);
+    }
+    .orb:nth-child(2){transform-origin:-110px 0; animation-duration:10s; top:48%}
+    .orb:nth-child(3){transform-origin:-70px 0; animation-duration:6s; top:52%}
+    .orb:nth-child(4){transform-origin:-140px 0; animation-duration:12s; top:50%}
+    .orb i{font-size:14px}
+    @keyframes spin{ from{transform:rotate(0deg) translateX(-90px) rotate(0deg)} to{transform:rotate(360deg) translateX(-90px) rotate(-360deg)} }
+  </style>
+</head>
+<body>
+  <div class="orbit-wrap">
+    <div class="center">⭐</div>
+    <div class="orb" style="transform:rotate(0deg) translateX(-90px)"><i>💬</i></div>
+    <div class="orb" style="transform:rotate(90deg) translateX(-90px)"><i>🔔</i></div>
+    <div class="orb" style="transform:rotate(180deg) translateX(-90px)"><i>❤</i></div>
+    <div class="orb" style="transform:rotate(270deg) translateX(-90px)"><i>⚙️</i></div>
+  </div>
+</body>
+</html>
+

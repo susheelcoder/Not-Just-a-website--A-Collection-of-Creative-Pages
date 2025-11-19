@@ -1,0 +1,75 @@
+<footer class="footer-c">
+
+  <div class="wrap">
+
+    <div class="c">
+      <h2>CorpBrand</h2>
+      <p>Leading innovative solutions worldwide.</p>
+    </div>
+
+    <div class="c">
+      <h3>Departments</h3>
+      <a href="#">IT</a>
+      <a href="#">Marketing</a>
+      <a href="#">Finance</a>
+      <a href="#">Human Resources</a>
+    </div>
+
+    <div class="c">
+      <h3>Resources</h3>
+      <a href="#">Docs</a>
+      <a href="#">Guides</a>
+      <a href="#">Roadmap</a>
+    </div>
+
+    <div class="c">
+      <h3>Reach Us</h3>
+      <p>Email: info@corp.com</p>
+      <p>Phone: +91 90000 11111</p>
+    </div>
+
+  </div>
+
+  <p class="bottom">© Copyright 2025 CorpBrand</p>
+
+</footer>
+
+<style>
+.footer-c {
+  background: #111;
+  color: #ccc;
+  padding: 60px 30px;
+  font-family: Poppins;
+}
+.wrap {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 30px;
+}
+.c h3 {
+  color: white;
+}
+.c a {
+  display: block;
+  margin: 5px 0;
+  color: #bbb;
+  text-decoration: none;
+  transition: .3s;
+}
+.c a:hover {
+  color: white;
+  transform: translateX(4px);
+}
+.bottom {
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid #333;
+  padding-top: 15px;
+}
+@media(max-width:900px) {
+  .wrap { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:500px) {
+  .wrap { grid-template-columns: 1fr; }
+}
+</style>

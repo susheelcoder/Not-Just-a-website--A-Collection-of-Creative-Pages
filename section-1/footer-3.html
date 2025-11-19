@@ -1,0 +1,95 @@
+<footer class="footer-a">
+
+  <div class="foot-wrap">
+
+    <div class="f-col">
+      <h2>BrandName</h2>
+      <p>Creative digital solutions for your business.</p>
+    </div>
+
+    <div class="f-col">
+      <h3>Explore</h3>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Pricing</a>
+      <a href="#">Blog</a>
+    </div>
+
+    <div class="f-col">
+      <h3>Support</h3>
+      <a href="#">Help Center</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+
+    <div class="f-col">
+      <h3>Subscribe</h3>
+      <input type="email" placeholder="Enter email…" />
+      <button>Join</button>
+    </div>
+
+  </div>
+
+  <p class="copy">© 2025 BrandName. All rights reserved.</p>
+</footer>
+
+<style>
+.footer-a {
+  background: linear-gradient(135deg, #141414, #1e1e1e);
+  color: #d9d9d9;
+  padding: 60px 30px;
+  font-family: "Poppins", sans-serif;
+}
+.foot-wrap {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.2fr;
+  gap: 40px;
+}
+.f-col h2, .f-col h3 {
+  color: white;
+}
+.f-col a {
+  display: block;
+  color: #bfbfbf;
+  margin: 6px 0;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.f-col a:hover {
+  color: #fff;
+  transform: translateX(5px);
+}
+.f-col input {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.f-col button {
+  padding: 10px 15px;
+  border: none;
+  width: 100%;
+  background: #fff;
+  color: #000;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.f-col button:hover {
+  background: #00aaff;
+  color: #fff;
+}
+.copy {
+  text-align: center;
+  margin-top: 40px;
+  color: #aaa;
+}
+@media (max-width: 900px) {
+  .foot-wrap { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 500px) {
+  .foot-wrap { grid-template-columns: 1fr; }
+}
+</style>

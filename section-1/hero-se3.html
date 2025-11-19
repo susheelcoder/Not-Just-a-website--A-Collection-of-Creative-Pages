@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3D Hero — Unique & Simple Colors</title>
+  <style>
+    :root{
+      --bg: #0f1724;           /* dark navy background */
+      --accent: #7dd3fc;       /* soft cyan */
+      --accent-2: #60a5fa;     /* soft blue */
+      --muted: #94a3b8;        /* muted text */
+      --glass: rgba(255,255,255,0.06);
+      --card-shadow: 0 20px 40px rgba(2,6,23,0.6);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg) 0%, #071020 60%);
+      color: #e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;align-items:center;justify-content:center;
+      padding:40px;
+    }
+
+    /* Page container */
+    .wrap{
+      width: min(1100px, 95%);
+      display:grid;
+      grid-template-columns: 1fr 520px;
+      gap: 36px;
+      align-items:center;
+    }
+
+    /* Left: content */
+    .content h1{
+      margin:0 0 12px 0;
+      font-size: clamp(36px, 5.2vw, 56px);
+      line-height:1.02;
+      letter-spacing:-0.02em;
+      color: white;
+    }
+    .content p{
+      margin:0 0 20px 0;
+      color:var(--muted);
+      font-size:1.05rem;
+      max-width:60ch;
+    }
+    .btn-row{display:flex;gap:12px;align-items:center}
+    .btn{
+      padding:12px 18px;border-radius:12px;font-weight:600;border:0;cursor:pointer;
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#072036;box-shadow: 0 8px 18px rgba(44,131,255,0.16);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .btn.secondary{
+      background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--accent-2);
+      box-shadow:none;padding:12px 16px;
+    }
+    .btn:active{transform:translateY(1px)}
+
+    /* Right: 3D stage */
+    .stage{
+      width:100%;height:520px;border-radius:var(--radius);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));
+      position:relative;overflow:visible;padding:26px;display:flex;align-items:center;justify-content:center;
+      box-shadow: var(--card-shadow);
+      perspective: 1200px; /* important for 3d */
+    }
+    .scene{
+      width:420px;height:420px;transform-style:preserve-3d;transition:transform .12s linear;will-change:transform;pointer-events:none;
+    }
+
+    /* floating elements - layers placed in Z */
+    .planet{
+      position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);
+      width:260px;height:260px;border-radius:50%;
+      background: radial-gradient(circle at 30% 20%, var(--accent) 0%, var(--accent-2) 45%, rgba(6,10,20,0.95) 60%);
+      box-shadow: 0 20px 60px rgba(8,12,24,0.7), inset -12px -8px 40px rgba(255,255,255,0.02);
+      transform-origin:center center;
+      will-change:transform, filter;
+    }
+    .ring{
+      position:absolute;left:50%;top:48%;transform:translate(-50%,-50%) rotateX(65deg) rotateZ(18deg);
+      width:420px;height:420px;border-radius:50%;
+      border: 4px solid rgba(125,211,252,0.12);
+      filter: blur(6px) saturate(120%);
+      mix-blend-mode:screen;pointer-events:none;
+    }
+    .satellite{
+      position:absolute; width:54px;height:54px;border-radius:10px;background:linear-gradient(180deg,#ffffff66, #ffffff22);
+      left:74%;top:24%;transform-origin:center;box-shadow:0 8px 28px rgba(0,0,0,0.6);
+      display:grid;place-items:center;font-weight:700;color:#072036;backdrop-filter: blur(4px);
+    }
+    .flare{
+      position:absolute;left:20%;top:18%;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle, rgba(125,211,252,0.28), rgba(96,165,250,0.06));filter:blur(18px);
+      mix-blend-mode:screen;pointer-events:none;
+    }
+
+    /* small 3D cards */
+    .card{
+      position:absolute;right:12%;bottom:10%;width:140px;height:110px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);backdrop-filter: blur(6px);box-shadow:0 12px 30px rgba(2,6,23,0.5);
+      display:flex;flex-direction:column;gap:10px;padding:12px;transform-origin:center center;transform:translateZ(40px) rotateY(-12deg);
+    }
+    .card h4{margin:0;font-size:0.9rem}
+    .card small{color:var(--muted)}
+
+    /* responsive */
+    @media (max-width:980px){
+      .wrap{grid-template-columns:1fr;gap:20px}
+      .stage{height:420px}
+    }
+
+    /* reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      .scene{transition:none}
+      .planet, .ring, .card{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="content">
+      <h1>Modern 3D Hero — Simple, Unique, Clean</h1>
+      <p>Ek sleek 3D hero section jo lightweight hai, simple color palette use karta hai aur subtle motion se lively dikhai deta hai. Mouse se halka sa parallax aur perspective movement milta hai — mobile pe touch support bhi hai.</p>
+      <div class="btn-row">
+        <button class="btn" id="cta">Get started</button>
+        <button class="btn secondary" id="learn">Learn more</button>
+      </div>
+    </div>
+
+    <div class="stage" id="stage">
+      <div class="scene" id="scene">
+        <div class="ring" aria-hidden="true"></div>
+        <div class="planet" id="planet" aria-hidden="true"></div>
+        <div class="flare" aria-hidden="true"></div>
+        <div class="satellite" aria-hidden="true">UI</div>
+        <div class="card" aria-hidden="true">
+          <h4>Live preview</h4>
+          <small>3D interaction</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Mouse / touch parallax for scene
+    (function(){
+      const stage = document.getElementById('stage');
+      const scene = document.getElementById('scene');
+      const planet = document.getElementById('planet');
+
+      let bounds = stage.getBoundingClientRect();
+      function updateBounds(){ bounds = stage.getBoundingClientRect(); }
+      window.addEventListener('resize', updateBounds);
+
+      function handleMove(clientX, clientY){
+        const x = (clientX - bounds.left) / bounds.width; // 0..1
+        const y = (clientY - bounds.top) / bounds.height; // 0..1
+
+        const rotY = (x - 0.5) * 18; // rotate scene
+        const rotX = (y - 0.5) * -12;
+        scene.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+
+        // depth parallax
+        const pX = (x - 0.5) * 40;
+        const pY = (y - 0.5) * -30;
+        planet.style.transform = `translateZ(40px) translate(${pX}px, ${pY}px) rotateY(${rotY/4}deg)`;
+
+        // small floating card counter movement
+        const card = scene.querySelector('.card');
+        card.style.transform = `translateZ(60px) rotateY(${rotY/2}deg) translate(${pX/6}px, ${pY/6}px)`;
+      }
+
+      let handle = null;
+      stage.addEventListener('mousemove', (e)=>{ handleMove(e.clientX, e.clientY) });
+      stage.addEventListener('touchmove', (e)=>{ if(e.touches[0]) handleMove(e.touches[0].clientX, e.touches[0].clientY) });
+
+      // subtle idle animation
+      let t = 0;
+      function idleAnim(){
+        t += 0.01;
+        const slight = Math.sin(t) * 4;
+        planet.style.transform += ` rotateZ(${slight}deg)`;
+        requestAnimationFrame(idleAnim);
+      }
+      // start idle only if not reduced motion
+      const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if(!mq.matches) idleAnim();
+
+      // CTA clicks simple ripple effect
+      document.getElementById('cta').addEventListener('click', (e)=>{
+        e.currentTarget.animate([
+          { transform: 'scale(1)'},
+          { transform: 'scale(0.98)'},
+          { transform: 'scale(1)'}
+        ], { duration:220 })
+      })
+
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Floating Icon</title>
+  <style>
+    body{height:100vh;display:grid;place-items:center;margin:0;background:#f5f7fb00;font-family:sans-serif}
+    .bubble {
+      width:80px;height:80px;border-radius:50%;
+      display:grid;place-items:center;
+      /* background:linear-gradient(135deg,#ffd89b,#19547b); */
+      box-shadow:0 10px 20px rgba(25,84,123,0.15);
+      animation:float 3.5s ease-in-out infinite;
+      cursor:pointer;
+    }
+    .bubble i{font-size:36px;color:#ffffff}
+    @keyframes float{
+      0%{transform:translateY(0) rotate(-2deg)}
+      50%{transform:translateY(-18px) rotate(3deg)}
+      100%{transform:translateY(0) rotate(-2deg)}
+    }
+  </style>
+</head>
+<body>
+  <div class="bubble" title="Click me">
+    <!-- emoji as icon, change to <img> or svg as needed -->
+    <i>🪄</i>
+  </div>
+</body>
+</html>

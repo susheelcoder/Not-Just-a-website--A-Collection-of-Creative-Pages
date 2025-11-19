@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Floating Icon</title>
+
+<style>
+.section-move1 {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  background: transparent;
+}
+
+.move-icon1 {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  font-size: 42px;
+  animation: moveLeftRight 4s ease-in-out infinite alternate,
+             floatUpDown 3s ease-in-out infinite;
+}
+
+@keyframes moveLeftRight {
+  from { left: 10%; }
+  to   { left: 80%; }
+}
+@keyframes floatUpDown {
+  0%   { transform: translateY(-50%) translateY(0); }
+  50%  { transform: translateY(-50%) translateY(-10px); }
+  100% { transform: translateY(-50%) translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="section-move1">
+  <div class="move-icon1">✨</div>
+</div>
+
+</body>
+</html>

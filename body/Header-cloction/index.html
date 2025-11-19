@@ -9,21 +9,38 @@
 <style>
     body {
         width: 100%;
+        margin: 0;
+        padding: 0;
     }
 
     nav {
         display: flex;
         justify-content: space-around;
     }
-    a{
+
+    a {
+        margin: auto;
         padding: 10px;
         text-decoration-line: none;
-        
     }
-    
-    li{
-        text-emphasis: none;
 
+    li {
+        text-emphasis: none;
+    }
+
+    @media (max-width:400px) {
+        ul {
+            margin: auto;
+            padding: 1em;
+            font-size: 0.8em;
+        }
+
+        a {
+            margin: auto;
+            text-decoration-line: none;
+            border-radius: 1em;
+            /* background-color: rgb(95, 95, 207); */
+        }
     }
 </style>
 
@@ -31,18 +48,24 @@
     <header>
         <nav>
             <h1>sk</h1>
-            
+
             <ul>
                 <l1><a href="">home</a></l1>
                 <l1><a href="">About</a></l1>
                 <l1><a href="">Project</a></l1>
                 <l1><a href="">Contect</a></l1>
             </ul>
-            <p><a style="background-color: rgb(95, 95, 207);" href="">fullow</a></p>
+            <ul>
+                <li><a href="">fullow</a></li>
+            </ul>
 
         </nav>
     </header>
 
+
+
+
+    
 </body>
 
 </html>

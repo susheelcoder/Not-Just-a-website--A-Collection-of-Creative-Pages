@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ZigZag Icon</title>
+
+<style>
+.section-move2 {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  background: transparent;
+}
+
+.move-icon2 {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  font-size: 42px;
+  animation: zigzag 5s ease-in-out infinite;
+}
+
+@keyframes zigzag {
+  0%   { top:20%; left:10%; }
+  25%  { top:40%; left:60%; }
+  50%  { top:60%; left:30%; }
+  75%  { top:35%; left:80%; }
+  100% { top:20%; left:10%; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="section-move2">
+  <div class="move-icon2">🪄</div>
+</div>
+
+</body>
+</html>

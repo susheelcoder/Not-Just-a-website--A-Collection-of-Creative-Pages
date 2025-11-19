@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Section Wise Floating Icons</title>
+
+<style>
+    body{
+        margin:0;
+        padding:0;
+        background:#f1f1f1;
+        font-family:sans-serif;
+    }
+
+    /* --- Section Design (You can edit) --- */
+    .icon-area{
+        height:350px;
+        background:#fff;
+        border-radius:20px;
+        margin:40px;
+        position:relative;
+        padding:20px;
+        box-shadow:0 8px 25px rgba(0,0,0,0.08);
+        overflow:hidden;
+    }
+
+    /* --- Floating Icon Style (Same as your code) --- */
+    .soft-icon{
+        position:absolute;
+        font-size:30px;
+        opacity:0.88;
+        pointer-events:none;
+        animation:softMove 3s ease-in-out infinite;
+    }
+
+    @keyframes softMove{
+        0%   { transform: translate(-50%,-50%) translateY(0) rotate(0deg); }
+        25%  { transform: translate(-50%,-50%) translateY(-7px) rotate(2deg); }
+        50%  { transform: translate(-50%,-50%) translateY(5px) rotate(-2deg); }
+        75%  { transform: translate(-50%,-50%) translateY(-4px) rotate(1deg); }
+        100% { transform: translate(-50%,-50%) translateY(0) rotate(0deg); }
+    }
+</style>
+</head>
+
+<body>
+
+<h2 style="text-align:center;">Each Section Has Floating Icons</h2>
+
+<!-- SECTION 1 -->
+<div class="icon-area" data-icons="📚,✏️,📝,🧮">
+    <h3>Section 1 — Reading & Writing</h3>
+</div>
+
+<!-- SECTION 2 -->
+<div class="icon-area" data-icons="🎨,🖌️,🖍️,🧩">
+    <h3>Section 2 — Creativity Zone</h3>
+</div>
+
+<!-- SECTION 3 -->
+<div class="icon-area" data-icons="📐,📏,🔢,🔤">
+    <h3>Section 3 — Mathematics & Learning</h3>
+</div>
+
+<!-- SECTION 4 -->
+<div class="icon-area" data-icons="🎒,🏫,📘,🧑‍🏫">
+    <h3>Section 4 — School Zone</h3>
+</div>
+
+<script>
+/* --- Generate floating icons in every section automatically --- */
+
+document.querySelectorAll(".icon-area").forEach(area => {
+
+    const iconList = area.dataset.icons.split(",");   // icons list for this section
+    let iconCount = 10;                                // icons per section
+
+    for(let i=0; i<iconCount; i++){
+        const div = document.createElement("div");
+        div.className = "soft-icon";
+
+        // Select different icons for each section
+        div.textContent = iconList[Math.floor(Math.random()*iconList.length)];
+
+        // Random position in section
+        div.style.left = Math.random()*100 + "%";
+        div.style.top  = Math.random()*100 + "%";
+
+        // Random animation timing
+        div.style.animationDuration = (2 + Math.random()*3) + "s";
+
+        area.appendChild(div);
+    }
+});
+</script>
+
+</body>
+</html>
