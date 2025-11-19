@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Hero Section</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+}
+
+body {
+    background: #020617;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.hero {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 70px;
+}
+
+/* LEFT SIDE */
+.title-3d {
+    font-size: 4rem;
+    font-weight: 800;
+    perspective: 900px;
+}
+
+.title-3d span {
+    color: #00eaff;
+    text-shadow: 0 0 20px #00eaff;
+}
+
+.sub {
+    margin-top: 15px;
+    max-width: 450px;
+    opacity: 0.8;
+}
+
+.btn {
+    margin-top: 25px;
+    padding: 12px 32px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    background: transparent;
+    border: 2px solid #00eaff;
+    color: #00eaff;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #00eaff;
+    color: #000;
+}
+
+/* RIGHT SIDE 3D CARD */
+.card3d {
+    width: 320px;
+    height: 320px;
+    background: #0f172a;
+    border-radius: 25px;
+    border: 1px solid #00eaff66;
+    box-shadow: 0px 0px 40px #00eaff44;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+    transition: transform 0.2s ease-out;
+}
+
+/* 3D CUBE INSIDE */
+.cube {
+    width: 180px;
+    height: 180px;
+    background: linear-gradient(135deg, #00eaff80, #003bff80);
+    border: 2px solid #00eaff;
+    border-radius: 20px;
+    box-shadow: 0 0 25px #00eaff88, inset 0 0 20px #00eaff44;
+    animation: float 3s ease-in-out infinite alternate;
+}
+
+/* FLOAT ANIMATION */
+@keyframes float {
+    0% { transform: translateY(-15px) rotateY(0deg); }
+    100% { transform: translateY(15px) rotateY(25deg); }
+}
+</style>
+<body>
+
+
+
+<section class="hero">
+
+    <div class="hero-left">
+        <h1 class="title-3d">Welcome to <span>3D World</span></h1>
+        <p class="sub">A premium hero section with deep 3D effect & neon glow.</p>
+        <button class="btn">Explore Now</button>
+    </div>
+
+    <div class="hero-right">
+        <div class="card3d" id="card">
+            <div class="cube"></div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+  // Mouse 3D Tilt Effect
+const card = document.getElementById("card");
+
+card.addEventListener("mousemove", (e) => {
+    let x = (card.offsetWidth / 2 - e.offsetX) / 12;
+    let y = (card.offsetHeight / 2 - e.offsetY) / 12;
+    card.style.transform = `rotateY(${ -x }deg) rotateX(${ y }deg)`;
+});
+
+card.addEventListener("mouseleave", () => {
+    card.style.transform = "rotateY(0deg) rotateX(0deg)";
+});
+
+</script>
+</body>
+</html>

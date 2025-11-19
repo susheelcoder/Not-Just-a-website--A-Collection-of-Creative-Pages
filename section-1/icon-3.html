@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Trailing Icon</title>
+<style>
+  html,body{height:100%;margin:0;background:#0f1724;overflow:hidden}
+  .trail {
+    position:fixed;width:32px;height:32px;border-radius:6px;display:grid;place-items:center;
+    pointer-events:none;transform:translate(-50%,-50%);transition:transform 0.12s linear, opacity 0.3s;
+    background:linear-gradient(135deg,#ff8a00,#e52e71);color:white;font-size:16px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.4);
+    opacity:0;
+  }
+</style>
+</head>
+<body>
+  <div id="t1" class="trail">✨</div>
+  <div id="t2" class="trail">⚡</div>
+  <div id="t3" class="trail">🔥</div>
+
+  <script>
+    const trails = [...document.querySelectorAll('.trail')];
+    window.addEventListener('mousemove', e => {
+      trails.forEach((el, i) => {
+        const delay = i * 40;
+        setTimeout(() => {
+          el.style.left = e.clientX + 'px';
+          el.style.top = e.clientY + 'px';
+          el.style.opacity = 1 - i*0.25;
+        }, delay);
+      });
+    });
+    // fade out when mouse leaves
+    window.addEventListener('mouseleave', ()=> trails.forEach((el)=> el.style.opacity=0));
+  </script>
+</body>
+</html>
+
