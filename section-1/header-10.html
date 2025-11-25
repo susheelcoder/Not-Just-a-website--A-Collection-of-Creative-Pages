@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Right Menu</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            padding: 0 5px;
+            background: #fbfbfb;
+            /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); */
+        }
+
+        /* Navbar */
+        .nav {
+            width: 100%;
+            padding: 15px 0px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgb(0, 0, 0);
+            position: relative;
+        }
+
+        .menu {
+            display: flex;
+        }
+
+        .menu li,
+        a {
+            text-decoration: none;
+            display: block;
+            margin: 5px;
+        }
+
+        a {
+            color: aqua !important;
+        }
+
+        a:hover {
+            color: rgb(107, 95, 234) !important;
+        }
+
+        /* Burger Menu Button */
+        .menu-btn {
+            font-size: 30px;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Right Side Menu */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -60%;
+            width: 50%;
+            height: 100%;
+            background: #1c1c1c;
+            padding-top: 70px;
+            padding-left: 20px;
+            padding-right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            transition: 0.4s ease;
+        }
+
+        /* Menu Links */
+        .side-menu a {
+            color: white;
+            font-size: 22px;
+            text-decoration: none;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Menu Open */
+        .side-menu.active {
+            right: 0;
+        }
+
+        /* Mobile View */
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+
+            .menu {
+
+                display: none;
+            }
+
+            .m-senter {
+                text-align: center;
+            }
+
+            .m-senter h1 {
+                font-size: medium;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="nav">
+            <div class="logo">My</div>
+
+
+            <div class="m-senter">
+                <h1>vishnupur village</h1>
+                <b>app</b>
+            </div>
+
+            <div class="menu">
+                <ul class="menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+
+            <!-- Menu Button -->
+            <div class="menu-btn" id="menuBtn">☰</div>
+
+            <!-- Right Side Slide Menu -->
+            <div class="side-menu" id="sideMenu">
+
+                <!-- Close Button -->
+                <div class="close-btn" id="closeBtn">✖</div>
+
+                <a href="#">Home</a>
+                <a href="#">Products</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+
+            </div>
+        </nav>
+    </header>
+
+
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const sideMenu = document.getElementById("sideMenu");
+        const closeBtn = document.getElementById("closeBtn");
+
+        /* Open Menu */
+        menuBtn.addEventListener("click", () => {
+            sideMenu.classList.add("active");
+        });
+
+        /* Close Menu */
+        closeBtn.addEventListener("click", () => {
+            sideMenu.classList.remove("active");
+        });
+    </script>
+
+</body>
+
+</html>
