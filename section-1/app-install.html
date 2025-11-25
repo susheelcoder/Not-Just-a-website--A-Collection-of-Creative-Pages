@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vishnupur App</title>
+  <link rel="manifest" href="">
+</head>
+
+<body>
+  <h1>Vishnupur App</h1>
+  <!-- <p>इस ऐप को इंस्टॉल करने के लिए नीचे दिए गए बटन पर क्लिक करें</p>it -->
+  <button id="installBtn">📲 ऐप इंस्टॉल करें</button>
+
+  <script>
+    // ========================
+    // 🔥 Version Number
+    // ========================
+    const APP_VERSION = "2.0";
+
+    // ========================
+    // 🔥 Manifest Create
+    // ========================
+    const manifestData = {
+      "name": "Vishnupur App",
+      "short_name": "Vishnupur",
+      "start_url": "/index.html?v=" + APP_VERSION, // Changed to index.html
+      "scope": "/",
+      "display": "standalone",
+      "background_color": "#ffffff",
+      "theme_color": "#0d47a1",
+      "version": APP_VERSION,
+      "icons": [
+        {
+          "src": "https://vishnupur.netlify.app/1.IMG/logo/vishnupur-01.png",
+          // "sizes": "192 x 192",
+          "sizes": "512x512",
+          "type": "image/png"
+        },
+        {
+          "src": "https://vishnupur.netlify.app/1.IMG/logo/vishnupur-02.png",
+          "sizes": "512x512",
+          "type": "image/png"
+        }
+      ]
+    };
+
+    const manifestBlob = new Blob([JSON.stringify(manifestData)], { type: "application/json" });
+    const manifestURL = URL.createObjectURL(manifestBlob);
+    document.querySelector('link[rel="manifest"]').setAttribute('href', manifestURL);
+
+    // =========================
+    // 🔥 Service Worker
+    // =========================
+    if ("serviceWorker" in navigator) {
+      const swCode = `
+      const CACHE_NAME = "vishnu-cache-${APP_VERSION}";
+      const urlsToCache = [
+        "/",
+        "/index.html?v=${APP_VERSION}",
+        "/abcd.html?v=${APP_VERSION}"
+      ];
+
+      self.addEventListener("install", event => {
+        console.log("Service Worker: Installing");
+        event.waitUntil(
+          caches.open(CACHE_NAME)
+            .then(cache => {
+              console.log("Service Worker: Caching App Shell");
+              return cache.addAll(urlsToCache);
+            })
+            .then(() => self.skipWaiting())
+        );
+      });
+
+      self.addEventListener("activate", event => {
+        console.log("Service Worker: Activating");
+        event.waitUntil(
+          caches.keys().then(keys =>
+            Promise.all(
+              keys
+                .filter(key => key !== CACHE_NAME)
+                .map(key => caches.delete(key))
+            )
+          ).then(() => self.clients.claim())
+        );
+      });
+
+      self.addEventListener("fetch", event => {
+        // Network-first strategy
+        event.respondWith(
+          fetch(event.request)
+            .then(response => {
+              // If valid response, cache it
+              if (response.status === 200) {
+                const responseClone = response.clone();
+                caches.open(CACHE_NAME)
+                  .then(cache => {
+                    cache.put(event.request, responseClone);
+                  });
+              }
+              return response;
+            })
+            .catch(() => {
+              // If network fails, try cache
+              return caches.match(event.request)
+                .then(response => {
+                  if (response) {
+                    return response;
+                  }
+                  // If not in cache, return offline page
+                  return caches.match('/index.html');
+                });
+            })
+        );
+      });
+    `;
+
+      const swBlob = new Blob([swCode], { type: "application/javascript" });
+      const swURL = URL.createObjectURL(swBlob);
+
+      navigator.serviceWorker.register(swURL)
+        .then(registration => {
+          console.log("Service Worker Registered with version:", APP_VERSION);
+        })
+        .catch(error => {
+          console.log("Service Worker registration failed:", error);
+        });
+    }
+
+    
+    // =========================
+    // 🔥 Install Button Logic
+    // =========================
+    let deferredPrompt;
+    const installBtn = document.getElementById("installBtn");
+
+    // Initially hide the install button
+    installBtn.style.display = "none";
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+      console.log("beforeinstallprompt event fired");
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      // Stash the event so it can be triggered later
+      deferredPrompt = e;
+      // Show the install button
+      installBtn.style.display = "inline-block";
+    });
+
+    installBtn.addEventListener("click", async () => {
+      console.log("Install button clicked");
+      // Hide the install button
+      installBtn.style.display = "none";
+
+      if (deferredPrompt) {
+        // Show the install prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        const result = await deferredPrompt.userChoice;
+
+        console.log("User choice:", result.outcome);
+
+        if (result.outcome === "accepted") {
+          console.log("User accepted the install prompt");
+          // Redirect to your main app page after installation
+          setTimeout(() => {
+            window.location.href = "/abcd.html?v=" + APP_VERSION;
+          }, 0);
+        }
+
+        // Clear the deferredPrompt variable
+        deferredPrompt = null;
+      }
+    });
+
+    // =========================
+    // 🔥 App Installed Event
+    // =========================
+    window.addEventListener("appinstalled", (evt) => {
+      console.log("App was successfully installed");
+      // Redirect to your main app page
+      window.location.href = "/abcd.html?v=" + APP_VERSION;
+    });
+
+    // =========================
+    // 🔥 Check if app is already installed
+    // =========================
+    window.addEventListener('load', () => {
+      if (window.matchMedia('(display-mode: standalone)').matches) {
+        console.log("App is running in standalone mode");
+        // If app is already installed, redirect to main page
+        if (window.location.pathname === '/' || window.location.pathname.includes('install')) {
+          window.location.href = "/abcd.html?v=" + APP_VERSION;
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>
