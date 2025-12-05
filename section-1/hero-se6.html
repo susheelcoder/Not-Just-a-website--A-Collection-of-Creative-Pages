@@ -1,0 +1,138 @@
+<article class="hero article">
+    <div class="hero-box">
+        <div class="hero-box1">
+            <div class="hero-d1">
+                <div class="hero-left">
+                    <h3>Web Design</h3>
+                    <p>At Haproven, we provide modern designs for every website section — including the header,
+                        footer, hero section, about, services, and contact. You can easily access the GitHub
+                        source code for each section and use it directly in your own website.</p>
+                    <button class="btn">Contact</button>
+                </div>
+            </div>
+            <div class="hero-d2">
+                <div class="hero-scroll">
+                    <div class="hero-boxs"></div>
+                    <div class="hero-boxs"></div>
+                    <div class="hero-boxs"></div>
+                    <div class="hero-boxs"></div>
+                    <div class="hero-boxs"></div>
+                    <div class="hero-boxs"></div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-box2">
+            <!-- <img src="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        alt=""> -->
+        </div>
+    </div>
+</article>
+
+
+
+<style>
+    /* =====
+  hero section
+  ====== */
+
+
+    .btn {
+        padding: 10px 22px;
+        border-radius: 8px;
+        border: 2px solid #6a5afe;
+        background: transparent;
+        color: #6a5afe;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: #6a5afe;
+        color: #fff;
+    }
+
+    /* .hero {
+        background-color: beige;
+
+    } */
+
+    .hero-box {
+        margin: 60px 0px 0;
+    }
+
+    .hero-box1 {
+        display: flex;
+        margin-inline: auto;
+        align-items: center;
+        height: 60vh;
+    }
+
+    .hero-box2 {
+        background-color: rgba(0, 255, 255, 0.239);
+        width: 100%;
+        height: 70vh;
+    }
+
+    .hero-d1 {
+        width: 70%;
+    }
+
+    .hero-d1 h3 {
+        font-size: 5em;
+        margin-bottom: 2%;
+    }
+
+    .hero-d1 p {
+        font-size: 1.4em;
+        margin-bottom: 2%;
+    }
+
+
+    .hero-left {
+        height: auto;
+        margin: 0px 40px 20px 0px;
+        width: auto;
+    }
+
+    .hero-d2 {
+        height: 60vh;
+        width: 40%;
+        background-color: rgba(159, 157, 154, 0);
+    }
+
+    .hero-scroll {
+        display: grid;
+        justify-items: center;
+    }
+
+
+
+    .hero-boxs {
+        background-color: rgb(92, 79, 213);
+        height: 15vh;
+        width: 50%;
+        margin: 5px;
+    }
+
+    .hero-d2 {
+
+        overflow: hidden;
+        position: relative;
+    }
+
+    .hero-scroll {
+        animation: scroll 10s linear infinite;
+    }
+
+
+    @keyframes scroll {
+        0% {
+            transform: translateY(100%);
+        }
+
+        100% {
+            transform: translateY(-100%);
+        }
+    }
+</style>
