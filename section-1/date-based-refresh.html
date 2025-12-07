@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-date-based-refresh</title>
+    <base href="/0.img+video/">
+    <meta http-equiv="refresh" content="3; url=/">
+</head>
+
+<body>
+    <section id="section">
+        <div id="img-box">
+            <!-- <img class="box" id="img1" src="P1.jpg" style="display:none;" /> -->
+            <video class="box" id="img1" autoplay muted src="/0.img+video/v1.mp4"style="display:none;"  ></video>
+            <video class="box" id="Christmas Day" autoplay muted src="Christmas Day.mp4" style="display:none;"  ></video>
+            <video class="box" id="New year" autoplay muted src="New year.mp4" style="display:none;"  ></video>
+
+        </div>
+
+    </section>
+</body>
+
+</html>
+
+
+
+
+<script>
+    function showImageByDate() {
+        const today = new Date();
+        const d = today.getDate();
+        const m = today.getMonth() + 1;
+        const y = today.getFullYear();
+
+        const todayStr = `${d}/${m}/${y}`;
+
+        const dates = {
+            "6/12/2025": "img1",
+            "7/12/2025": "img2",
+            "25/12/2025": "Christmas Day",
+            "9/12/2025": "img4"
+        };
+
+        // Hide all first
+        document.querySelectorAll("#img-box img").forEach(img => {
+            img.style.display = "none";
+        });
+
+        // Show today's image if exists
+        if (dates[todayStr]) {
+            document.getElementById(dates[todayStr]).style.display = "block";
+        }
+    }
+
+    showImageByDate();
+
+</script>
+
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .img-box {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .box {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+    }
+</style>

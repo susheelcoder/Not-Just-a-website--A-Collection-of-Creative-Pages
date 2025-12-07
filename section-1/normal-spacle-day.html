@@ -1,0 +1,85 @@
+<section id="img-box">
+    <ul>
+        <li>
+            <!-- Day 1 -->
+            <video class="box" id="day1" autoplay muted src="1.IMG/imp/New Year.mp4" style="display:none;"></video>
+            <video class="box1" id="day1_m" autoplay muted src="1.IMG/imp/M/New year.mp4" style="display:none;"></video>
+        </li>
+
+        <li>
+            <!-- Christmas -->
+            <video class="box" id="christmas" autoplay muted src="1.IMG/imp/Christmas_Day.mp4"
+                style="display:none;"></video>
+            <video class="box1" id="christmas_m" autoplay muted src="1.IMG/imp/M/Christmas_Day.mp4"
+                style="display:none;"></video>
+        </li>
+
+        <li>
+            <!-- New Year -->
+            <video class="box" id="NewYear" autoplay muted src="1.IMG/imp/New Year.mp4" style="display:none;"></video>
+            <video class="box1" id="NewYear_m" autoplay muted src="1.IMG/imp/M/New year.mp4"
+                style="display:none;"></video>
+        </li>
+    </ul>
+</section>
+
+<!-- Normal Day -->
+<div id="normal-day" style="display:none;">
+    <h1>Susheel Coder</h1>
+</div>
+
+
+<style>
+    .box,
+    .box1 {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+    }
+</style>
+
+
+
+<script>
+    function showImageByDate() {
+        const today = new Date();
+        const d = today.getDate();
+        const m = today.getMonth() + 1;
+        const y = today.getFullYear();
+
+        const todayStr = `${d}/${m}/${y}`;
+
+        // Date to MAIN ID match
+        const dates = {
+            "7/12/2025": "day1",
+            "25/12/2025": "christmas",
+            "1/1/2026": "NewYear"
+        };
+
+        // Hide all videos first
+        document.querySelectorAll("#img-box video").forEach(v => {
+            v.style.display = "none";
+        });
+
+        document.getElementById("normal-day").style.display = "none";
+
+        // Device Check
+        const isMobile = window.innerWidth <= 750;
+
+        if (dates[todayStr]) {
+            const id = dates[todayStr];
+
+            if (isMobile) {
+                document.getElementById(id + "_m").style.display = "block";  // mobile video
+            } else {
+                document.getElementById(id).style.display = "block";         // desktop video
+            }
+        }
+        else {
+            document.getElementById("normal-day").style.display = "block";
+        }
+    }
+
+    showImageByDate();
+
+</script>

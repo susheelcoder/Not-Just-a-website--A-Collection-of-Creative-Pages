@@ -34,20 +34,29 @@
     /* =====
   hero section
   ====== */
+    /* .a {
+      padding: 10px 22px;
+      border-radius: 8px;
+      border: 2px solid #6a5afe;
+      background: transparent;
+      color: #6a5afe;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+  } */
 
-
-    .btn {
+    .a {
         padding: 10px 22px;
         border-radius: 8px;
         border: 2px solid #6a5afe;
         background: transparent;
-        color: #6a5afe;
+        color: #0de82b;
         font-weight: 600;
         cursor: pointer;
         transition: 0.3s;
     }
 
-    .btn:hover {
+    .a:hover {
         background: #6a5afe;
         color: #fff;
     }
@@ -56,9 +65,16 @@
         background-color: beige;
 
     } */
+    .hero {
+        background-color: #0b0a0af3;
+        margin-top: -60px;
+        /* max-width: 1400px; */
+        padding: 0 28px;
+        margin: auto;
+    }
 
     .hero-box {
-        margin: 60px 0px 0;
+        margin: 0px 0px 0;
     }
 
     .hero-box1 {
@@ -66,26 +82,32 @@
         margin-inline: auto;
         align-items: center;
         height: 60vh;
+        padding: 0 5vh;
     }
 
     .hero-box2 {
         background-color: rgba(0, 255, 255, 0.239);
         width: 100%;
         height: 70vh;
+
+
     }
 
     .hero-d1 {
         width: 70%;
+        margin: 60px 0px 0;
     }
 
     .hero-d1 h3 {
         font-size: 5em;
         margin-bottom: 2%;
+        color: #ffffffb5;
     }
 
     .hero-d1 p {
         font-size: 1.4em;
-        margin-bottom: 2%;
+        margin-bottom: 6%;
+        color: #b2abead2;
     }
 
 
@@ -99,24 +121,36 @@
         height: 60vh;
         width: 40%;
         background-color: rgba(159, 157, 154, 0);
+
+        overflow: hidden;
+        position: relative;
     }
 
     .hero-scroll {
+        margin: auto;
+        width: 80%;
+        overflow: hidden;
+        position: relative;
         display: grid;
         justify-items: center;
+        animation: scroll 8s linear infinite;
     }
 
 
 
     .hero-boxs {
         background-color: rgb(92, 79, 213);
-        height: 15vh;
-        width: 50%;
-        margin: 5px;
+        background-image: url(/IMG/p/S1.png);
+        height: 240px;
+        width: 100%;
+        margin: 10px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+
     }
 
     .hero-d2 {
-
         overflow: hidden;
         position: relative;
     }
@@ -135,4 +169,98 @@
             transform: translateY(-100%);
         }
     }
+
+
+    /* =========================
+   📱 Mobile Responsive CSS
+   ========================= */
+@media (max-width: 768px) {
+
+    .hero {
+        padding: 0 18px;
+        margin-top: -20px;
+    }
+
+    .hero-box1 {
+        flex-direction: column;
+        height: auto;
+        padding: 20px 0;
+        gap: 20px;
+    }
+
+    .hero-d1 {
+        width: 100%;
+        margin: 20px 0 0;
+        text-align: left;
+    }
+
+    .hero-left {
+        margin: 0;
+        width: 100%;
+    }
+
+    .hero-d1 h3 {
+        font-size: 2.4em;
+        line-height: 1.2;
+        margin-bottom: 12px;
+    }
+
+    .hero-d1 p {
+        font-size: 1.1em;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    .btn, .a {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    /* Right side scroll section */
+    .hero-d2 {
+        width: 100%;
+        height: 240px;
+        margin-top: 10px;
+    }
+
+    .hero-scroll {
+        width: 90%;
+        animation: scroll 12s linear infinite;
+    }
+
+    .hero-boxs {
+        height: 160px;
+        margin: 6px 0;
+        background-size: cover;
+    }
+
+    /* Bottom large image box (hero-box2) */
+    .hero-box2 {
+        height: 40vh;
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+/* Extra small mobile (280px–350px) */
+@media (max-width: 350px) {
+    .hero-d1 h3 {
+        font-size: 2em;
+    }
+
+    .hero-d1 p {
+        font-size: 1em;
+    }
+
+    .hero-boxs {
+        height: 130px;
+    }
+
+    .hero-box2 {
+        height: 35vh;
+    }
+}
+
+
+
 </style>
