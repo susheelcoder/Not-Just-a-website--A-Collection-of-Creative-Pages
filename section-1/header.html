@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="logo">
+            <a href="/">
+                <span>Susheel</span>coder
+            </a>
+        </div>
+
+        <nav id="navbar">
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+
+            <!-- Day Night Toggle -->
+            <button id="themeToggle">🌙</button>
+
+            <!-- Mobile Menu -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --bg: #ffffff;
+            --text: #111;
+            --a-color: #00eaff;
+        }
+
+        .dark {
+            --bg: #0d0d0d;
+            --text: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        /* HEADER */
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: var(--bg);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #a8a8a8;
+        }
+
+        .logo a {
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .logo span {
+            color: #f527eb;
+        }
+
+        /* NAV */
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--a-color);
+        }
+
+        /* RIGHT SIDE */
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        #themeToggle {
+            border: none;
+            background: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* HAMBURGER */
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text);
+            margin: 4px 0;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:768px) {
+
+            #navbar {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--bg);
+                display: none;
+            }
+
+            #navbar.active {
+                display: block;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+        }
+    </style>
+
+
+    <script>
+        // Mobile Menu
+
+        function toggleMenu() {
+            document.getElementById("navbar").classList.toggle("active");
+        }
+
+
+        // Theme Toggle
+
+        const toggle = document.getElementById("themeToggle");
+
+        toggle.onclick = function () {
+
+            document.body.classList.toggle("dark");
+
+            if (document.body.classList.contains("dark")) {
+                toggle.textContent = "☀️";
+                localStorage.setItem("theme", "dark");
+            } else {
+                toggle.textContent = "🌙";
+                localStorage.setItem("theme", "light");
+            }
+
+        }
+
+
+        // Save Theme
+
+        if (localStorage.getItem("theme") === "dark") {
+            document.body.classList.add("dark");
+            toggle.textContent = "☀️";
+        }
+    </script>
+
+</body>
+
+</html>
